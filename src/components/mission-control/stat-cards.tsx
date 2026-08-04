@@ -1,17 +1,17 @@
-import { Users, CalendarDays, Inbox, Wallet, Sparkles } from "lucide-react";
-import { stats } from "@/data/demo";
+import { Users, CalendarDays, Clock, UserCheck } from "lucide-react";
+
+export type Stat = { label: string; value: string; delta: string; icon: keyof typeof icons };
 
 const icons = {
   users: Users,
   calendar: CalendarDays,
-  inbox: Inbox,
-  wallet: Wallet,
-  sparkles: Sparkles,
+  clock: Clock,
+  active: UserCheck,
 };
 
-export function StatCards() {
+export function StatCards({ stats }: { stats: Stat[] }) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       {stats.map((s) => {
         const Icon = icons[s.icon];
         return (
