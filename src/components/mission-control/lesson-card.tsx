@@ -31,16 +31,22 @@ function Section({
           <ChevronDown className={`size-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
         </button>
       </div>
-      <div
-        className={`scroll-slim mt-2 overflow-hidden text-[13px] leading-relaxed text-secondary-foreground ${
-          open ? "h-[124px] overflow-y-auto" : "h-[38px]"
-        }`}
-      >
-        {children}
+      <div className="relative">
+        <div
+          className={`scroll-slim mt-2 overflow-hidden text-[13px] leading-relaxed text-secondary-foreground ${
+            open ? "h-[124px] overflow-y-auto" : "h-[38px]"
+          }`}
+        >
+          {children}
+        </div>
+        {!open && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-surface to-transparent" />
+        )}
       </div>
     </div>
   );
 }
+
 
 export function LessonCard({ lesson }: { lesson: Lesson }) {
   return (
